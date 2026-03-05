@@ -18,12 +18,12 @@ Status: Active
 ---
 
 ## Stage 1 — Android Studio Project Setup
-- [ ] Create Android Studio project (Compose + Material3)
-- [ ] Configure Gradle (Kotlin, Room, Coroutines, Navigation, Serialization/JSON)
-- [ ] App theme (light + dark)
-- [ ] Navigation scaffold (NavHost + routes)
-- [ ] Define base module/package structure (data, repository, ui, viewmodel, voice, utils)
-- [ ] Add required permissions placeholders (microphone) + runtime permission flow plan
+- [x] Create Android Studio project (Compose + Material3)
+- [x] Configure Gradle (Kotlin, Room, Coroutines, Navigation, Serialization/JSON)
+- [x] App theme (light + dark)
+- [x] Navigation scaffold (NavHost + routes)
+- [x] Define base module/package structure (data, repository, ui, viewmodel, voice, utils)
+- [x] Add required permissions placeholders (microphone) + runtime permission flow plan
 
 Deliverable:
 - [ ] Project opens in Android Studio and builds successfully
@@ -220,3 +220,4 @@ Deliverable:
 - [ ] Cloud sync / multi-device accounts / real household sharing
 - [ ] Barcode scanning + product DB
 - [ ] Full cooking instructions / nutrition / videos
+
