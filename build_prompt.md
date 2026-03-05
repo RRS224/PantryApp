@@ -1,242 +1,134 @@
-You are the lead Android engineer for this project.
+# build_prompt.md — PantryCheck (Staged AI-Assisted Development)
 
-The product specification is located at:
+This repository is built in strict stages. Each run must implement ONE stage only.
 
-PantryApp/PantryApp_Specification.md
+Primary sources of truth:
+1) SPEC.md
+2) tasks.md
+3) PROJECT_STATE.md
+4) DB_SCHEMA_ROOM.md (for Stage 2 schema)
+5) AGENTS.md (working agreements + stage lock)
 
-Read that document completely before generating any code.
+If any documents conflict:
+- SPEC.md overrides everything.
+- tasks.md overrides build_prompt.md when it is more specific.
 
-Your job is to implement ONLY the V1 scope described in that specification.
+----------------------------------------------------------------------
+## Non-Negotiable Stage Lock
 
----------------------------------------------------
-GUARDRAILS (must follow)
----------------------------------------------------
+You MUST implement ONLY the single stage explicitly requested by the user.
 
-1. Do NOT add features not listed in the V1 scope.
-2. Do NOT redesign the architecture unless the spec explicitly requires it.
-3. Do NOT implement future features (barcode scanning, payments, community backend, etc.).
-4. Do NOT add unnecessary libraries or frameworks.
-5. Keep the code simple, readable, and modular.
-6. Use MVVM with Repository pattern.
-7. All database operations must use Room with coroutines.
-8. UI must be Jetpack Compose using Material3.
-9. The app must work fully offline.
-10. When unsure, prefer the simplest implementation that satisfies the specification.
+If the requested stage is Stage N:
+- Do not implement Stage N+1 or later.
+- Do not add UI/screens/navigation for later stages.
+- Do not add “nice to have” architecture or dependencies.
 
----------------------------------------------------
-TECH STACK
----------------------------------------------------
+If you notice work that belongs to a later stage:
+- leave a TODO comment in the most relevant file
+- mention it in the final stage report
+- STOP
 
-Language: Kotlin  
-UI: Jetpack Compose (Material3)  
-Architecture: MVVM  
-Database: Room (SQLite)  
-Async: Coroutines + Flow  
-Voice: Android SpeechRecognizer  
+----------------------------------------------------------------------
+## Allowed Scope by Stage
 
-Minimum Android version: API 26
+Stage 1 — Android scaffold
+- project setup, build stabilization, minimal app launch
 
----------------------------------------------------
-OUTPUT FORMAT
----------------------------------------------------
+Stage 2 — Data layer (Room foundation)
+- Room schema (entities/DAOs/database/migrations)
+- repository interface + Room implementation
+- seed logic
+- DI wiring (simple provider only; no Hilt unless SPEC explicitly requires)
+- NO UI, no new screens
 
-Provide full files with paths.
+Stage 3+ — UI and features
+- do not touch during Stage 2 unless required for compilation
 
-Example format:
+----------------------------------------------------------------------
+## Standard Execution Protocol (for every stage)
 
-/app/src/main/java/com/pantrycheck/MainActivity.kt
-<full file contents>
+When asked to implement a stage, do this sequence:
 
-Do NOT provide partial snippets.
+### Step 0 — Confirm Stage + Inputs
+State:
+- which stage you are implementing
+- which files you are using as sources of truth
+- what is out of scope
 
----------------------------------------------------
-BUILD FLOW (follow in order)
----------------------------------------------------
-
-Work through the project in stages.
-
-Do NOT jump ahead to later stages.
-
-STAGE 1 — PROJECT STRUCTURE
-Generate the complete Android Studio project structure including:
-
-- Gradle files
-- Application class
-- Navigation setup
-- Theme
-- Base packages
-
-Show the folder structure first.
-
-Wait for confirmation before continuing.
-
----------------------------------------------------
-
-STAGE 2 — DATABASE LAYER
-
-Implement the Room database based on the specification.
-
-Include:
-
-Entities
-- households
-- pantry_items
-- locations
-- usage_history
-- meal_ideas
-- meal_ingredients
-- community_outbox
-- shopping_list_items
-
-Create:
-- DAOs
-- Database class
-- Repository layer
-
-Seed:
-- default household
-- default locations
-- initial meal suggestion dataset
-
-Stop after this stage and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 3 — INVENTORY ENGINE
-
-Implement:
-
-Home screen inventory list  
-Search functionality  
-Add Item screen  
-Edit Item screen  
-Item Detail screen  
-
-Include:
-
-COUNT mode logic  
-LEVEL mode logic  
-FRESH item behavior  
-Enter Current Stock feature  
-Undo snackbar  
-UsageHistory logging  
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 4 — PANTRY RECOUNT
-
-Implement the Recount Pantry workflow.
-
-Flow:
-
-1. Show current inventory items first
-2. Allow quick stock correction
-3. Allow marking items empty
-4. Allow adding new items not currently listed
-5. Save updated inventory state
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 5 — MEAL SUGGESTION ENGINE
-
-Implement:
-
-Meal Suggestions screen  
-People selector (adults + kids)  
-Segments:
-- Breakfast
-- Lunch
-- Dinner
-- Quick meals
-- Kids meals
-- Lazy day meals
-- Use-soon
-- Desserts
-- Guest mode
-
-Matching engine:
-- required ingredient matching
-- near-match logic
-- serving estimate display
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 6 — USER MEAL IDEAS
-
-Implement:
-
-Add Meal Idea screen
-
-Fields:
-- meal name
-- meal type
-- diet tag
-- kids-friendly toggle
-- must-have ingredients list (max 10)
-
-Store in database.
-
-Include “Submit to Community” option that stores entry in community_outbox.
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 7 — VOICE INPUT
-
-Add voice input support for:
-
-Search  
-Add item fields  
-Add meal fields  
-Command-style updates
-
-Supported commands include:
-
-add milk two cartons  
-set eggs to twelve  
-oil half  
-mark tomatoes used  
-suggest lunch for two adults and two kids  
-
-Implement a VoiceCommandParser component.
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-STAGE 8 — SETTINGS & BACKUP
-
-Implement Settings screen:
-
-Units (Metric / Imperial)  
-Household selection  
-Recount Pantry shortcut  
-Export JSON backup  
-Import JSON restore  
-
-Stop and wait for confirmation.
-
----------------------------------------------------
-
-FINAL STEP
-
+### Step 1 — Plan (before writing code)
 Provide:
+- a short checklist of tasks you will complete for this stage
+- an explicit list of files you will create/modify (with paths)
 
-RUN.md
+If your file list includes UI/screens during Stage 2:
+- revise the plan to remove them.
 
-Include instructions to:
+### Step 2 — Implement
+Create/modify only what is required for the stage.
+Follow AGENTS.md rules.
 
-- open the project in Android Studio
-- run the app on emulator or device
-- grant microphone permission for voice input
+### Step 3 — Verify
+At minimum:
+- Gradle sync succeeds
+- project compiles
+- app launches (if applicable to stage)
+- Stage 2: seed runs without crash and tables are accessible
 
----------------------------------------------------
+### Step 4 — Stage Report (mandatory)
+Output in this exact format:
 
-Begin with STAGE 1: Project structure.
+A) Summary (3–6 bullets)
+B) Folder tree (only the new/changed parts)
+C) Files changed (paths only)
+D) How to verify (exact steps/commands)
+E) tasks.md checkbox updates you made
+F) Assumptions / Questions (if any)
+
+Then STOP and wait for explicit approval.
+
+----------------------------------------------------------------------
+## Stage 2 Specific Requirements (Room)
+
+Stage 2 must implement the database exactly as defined in:
+- tasks.md Stage 2 checklist
+- DB_SCHEMA_ROOM.md for canonical schema
+
+Architecture constraints (must follow):
+- Domain models have NO Room annotations
+- Room entities are separate from domain models
+- Repository is an interface in domain layer
+- Room repository implementation lives in data layer
+- Mappers convert Entity ↔ Domain
+- DAO queries should return Flow where appropriate
+
+Seeding requirements:
+- Seed household “Home”
+- Seed locations: Pantry / Fridge / Freezer / Other
+- Seed system Meal Suggestions dataset (V1 can start small; structure supports 80–150)
+
+Migration requirements:
+- Create a clear strategy (start at version 1)
+- Prefer additive migrations; avoid destructive changes
+
+Out of scope for Stage 2:
+- new UI screens
+- Compose changes (unless required to fix compilation)
+- feature logic beyond persistence plumbing
+
+----------------------------------------------------------------------
+## Drift Detection (self-check)
+
+Before finalizing your work, ask yourself:
+- Did I touch any UI file unnecessarily?
+- Did I add any dependency not explicitly required?
+- Did I implement anything beyond Stage N?
+
+If yes:
+- revert those changes
+- keep only Stage N deliverables
+
+----------------------------------------------------------------------
+## Final Rule
+
+After completing the stage report:
+STOP. Do not continue to the next stage until the user explicitly asks.
