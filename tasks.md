@@ -31,6 +31,84 @@ Deliverable:
 ---
 
 ## Stage 2 — Database Layer (Room)
+
+Goal
+Implement the Room database foundation for PantryCheck while enforcing clean architecture boundaries so that Room types never leak outside the data layer.
+
+Architecture Rules
+
+Room must be isolated inside the data layer.
+No @Entity, @Dao, RoomDatabase, or other Room types may appear in domain or UI layers.
+
+Domain models must be plain Kotlin classes with no Room annotations.
+
+Repository must be defined as an interface in the domain layer.
+
+The Room implementation must live in the data layer and implement the repository interface.
+
+All conversions between Room entities and domain models must use mapper functions.
+
+DAO query results should return Flow where appropriate.
+
+Required Package Structure (inside PantryCheck module)
+
+domain/model
+
+PantryItem (pure Kotlin model)
+
+domain/repository
+
+PantryRepository (interface)
+
+data/local/room
+
+PantryItemEntity (@Entity)
+
+PantryDao (@Dao)
+
+PantryDatabase (RoomDatabase)
+
+data/mapper
+
+PantryItemMapper (Entity ↔ Domain conversion)
+
+data/repository
+
+RoomPantryRepository : PantryRepository
+
+di
+
+Simple provider that exposes PantryRepository backed by RoomPantryRepository
+(Hilt is not required unless already specified in the project.)
+
+Repository Interface Contract (minimum)
+
+observeAllItems(): Flow<List>
+
+upsertItem(item: PantryItem)
+
+deleteItem(item: PantryItem)
+
+Optional methods if required by SPEC.md
+
+observeExpiringSoon(thresholdDays: Int): Flow<List>
+
+observeLowStock(): Flow<List>
+
+Definition of Done
+
+• Room database builds successfully
+• Domain models contain no Room annotations
+• Repository interface exists and Room implementation conforms to it
+• Mapper functions convert between Entity and Domain
+• Project compiles and runs
+
+Out of Scope for Stage 2
+
+• No Compose UI changes
+• No business logic beyond persistence plumbing
+• No inventory screens yet
+
 ### Entities (must match spec)
 - [ ] households
 - [ ] locations
