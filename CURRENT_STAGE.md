@@ -1,43 +1,32 @@
-# CURRENT_STAGE.md
+# CURRENT STAGE
 
-This file defines the current development stage of the PantryCheck project.
+## Stage Status
 
-Agents must read this file before starting any task.
+Stage 0 — Planning → COMPLETE  
+Stage 1 — Android Project Scaffold → COMPLETE  
+Stage 2 — Database Layer (Room) → COMPLETE  
+Stage 3 — Inventory CRUD UI → COMPLETE  
 
----
+## Current Development Stage
 
-Current stage
+Stage 4 — Inventory Intelligence and Workflows
 
-Stage 3 � Inventory CRUD UI
+This stage will introduce:
 
-Status
+- Inventory recount workflows
+- Smart quantity adjustment helpers
+- Low stock indicators
+- Basic inventory intelligence derived from usage history
 
-In progress
+## Development Rules
 
----
+Agents must:
 
-Next stage
+1. Only implement functionality belonging to the current stage.
+2. Verify tasks against `tasks.md`.
+3. Follow the Supervisor → Builder → Reviewer orchestration workflow defined in `ORCHESTRATOR_AGENT.md`.
+4. Avoid implementing future-stage features prematurely.
 
-Stage 4 � Inventory intelligence and workflows
+## Next Milestone
 
-Not started.
-
----
-
-Rules for agents
-
-1. Never implement work beyond the current stage.
-2. Do not automatically start the next stage.
-3. Wait for explicit instruction from the user before moving stages.
-4. Always verify the current stage against tasks.md.
-
----
-
-Workflow mode
-
-Supervisor-controlled multi-agent workflow may be used.
-
-When a Supervisor agent is active:
-- Builder and Reviewer must follow Supervisor instructions.
-- Supervisor must still obey SPEC.md, CURRENT_STAGE.md, tasks.md, and AGENTS.md.
-- Supervisor cannot authorize work beyond the current stage.
+Complete Stage 4 features and pass reviewer approval before advancing the stage marker.
