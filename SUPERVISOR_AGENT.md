@@ -208,6 +208,58 @@ If CURRENT_STAGE.md says Stage 2:
 The same rule applies to every future stage.
 
 ---
+## Time log coordination
+
+If TIME_LOG.md exists, the Supervisor must ensure time entries are recorded.
+
+Responsibilities:
+- ensure Builder logs estimated effort after implementation passes
+- ensure Reviewer logs estimated effort after reviews
+- log Supervisor orchestration effort when significant
+
+Supervisor may append entries directly to TIME_LOG.md if agents omit them.
+
+## Android Studio Failure Protocol
+
+When the user reports a local Android Studio build or runtime failure, follow this procedure automatically.
+
+Step 1 — Analyze
+Identify the most likely root cause from the error output.
+Focus on the first relevant error message and ignore long Gradle logs that are not directly related.
+
+Step 2 — Builder Fix Pass
+Issue a narrow fix pass to the Builder agent.
+
+Rules for the fix pass:
+- Modify only the files required to resolve the error.
+- Do not expand scope beyond the current stage.
+- Do not introduce new dependencies unless strictly required.
+- Provide full file replacements if needed.
+
+Step 3 — Reviewer Validation
+Send the Builder fix to the Reviewer agent for a quick validation.
+
+The Reviewer must check:
+- architecture boundaries
+- stage scope discipline
+- that the fix does not introduce new issues
+
+Step 4 — Return Verification Checklist
+After Reviewer validation, return a short Android Studio verification checklist to the user.
+
+Checklist should include only the steps required to confirm the fix.
+
+Step 5 — Stop
+Stop and wait for the user’s next Android Studio verification result.
+
+Do not commit or push changes during error resolution passes.
+
+### Error Log Handling
+
+When users paste build logs:
+- analyze only the first relevant error
+- avoid processing entire multi-thousand line Gradle logs
+- request additional lines only if necessary
 
 ## Final Rule
 
