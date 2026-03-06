@@ -159,42 +159,42 @@ Deliverable:
 
 ## Stage 3 — Inventory Core (UI + Logic)
 ### Home Screen
-- [ ] Search bar + live filtering (under 200ms typical)
-- [ ] Tabs/filters: All / Pantry / Fridge / Freezer / Use Soon (as per spec)
-- [ ] Item list with inline quick actions:
-  - [ ] COUNT: [-] [+]
-  - [ ] LEVEL: “Level” button
-  - [ ] FRESH: “Use” + “Discard” (or on detail if not on list)
-- [ ] Add Item button
-- [ ] Entry card/button to Meal Suggestions
+- [x] Search bar + live filtering (under 200ms typical)
+- [x] Tabs/filters: All / Pantry / Fridge / Freezer / Use Soon (as per spec)
+- [x] Item list with inline quick actions:
+  - [x] COUNT: [-] [+]
+  - [x] LEVEL: “Level” button
+  - [x] FRESH: “Use” + “Discard” (or on detail if not on list)
+- [x] Add Item button
+- [x] Entry card/button to Meal Suggestions
 
 ### Add/Edit Item
-- [ ] Add Item screen with:
-  - [ ] Item name (voice-ready)
-  - [ ] Variant (optional)
-  - [ ] Location (including custom locations)
-  - [ ] Tracking mode: COUNT / LEVEL / FRESH (default rules)
-  - [ ] COUNT fields: quantity + unit + optional size-per-unit
-  - [ ] LEVEL fields: level selector (0–5 labels)
-  - [ ] FRESH fields: added date + use-soon days + optional quantity
-- [ ] Edit flow reuses screen and updates updated_at
-- [ ] Naming normalization (base name + variant separation rules)
+- [x] Add Item screen with:
+  - [x] Item name (voice-ready)
+  - [x] Variant (optional)
+  - [x] Location (including custom locations)
+  - [x] Tracking mode: COUNT / LEVEL / FRESH (default rules)
+  - [x] COUNT fields: quantity + unit + optional size-per-unit
+  - [x] LEVEL fields: level selector (0–5 labels)
+  - [x] FRESH fields: added date + use-soon days + optional quantity
+- [x] Edit flow reuses screen and updates updated_at
+- [x] Naming normalization (base name + variant separation rules)
 
 ### Item Detail Screen
-- [ ] COUNT:
-  - [ ] [+1] [-1]
-  - [ ] Enter Current Stock (numeric keypad + Done)
-  - [ ] Undo snackbar
-- [ ] LEVEL:
-  - [ ] Set Level selector
-  - [ ] Undo snackbar
-- [ ] FRESH:
-  - [ ] Mark Used
-  - [ ] Discard
-  - [ ] Shows age and “Use soon” state
+- [x] COUNT:
+  - [x] [+1] [-1]
+  - [x] Enter Current Stock (numeric keypad + Done)
+  - [x] Undo snackbar
+- [x] LEVEL:
+  - [x] Set Level selector
+  - [x] Undo snackbar
+- [x] FRESH:
+  - [x] Mark Used
+  - [x] Discard
+  - [x] Shows age and “Use soon” state
 
 ### Logging
-- [ ] All changes write usage_history entries (ADD/REMOVE/SET/ADJUST/LEVEL_SET/FRESH_USED/FRESH_DISCARDED)
+- [x] All changes write usage_history entries (ADD/REMOVE/SET/ADJUST/LEVEL_SET/FRESH_USED/FRESH_DISCARDED)
 
 Deliverable:
 - [ ] User can fully manage inventory and see it persist after app restart
@@ -313,6 +313,8 @@ Deliverable:
 - [ ] Cloud sync / multi-device accounts / real household sharing
 - [ ] Barcode scanning + product DB
 - [ ] Full cooking instructions / nutrition / videos
+
+
 
 
 

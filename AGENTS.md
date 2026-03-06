@@ -119,3 +119,17 @@ Do not invent additional matching rules beyond the spec.
 
 ## If anything is ambiguous
 - Ask a single targeted question OR choose the simplest reasonable default and clearly state the assumption.
+
+## Time logging
+
+If TIME_LOG.md exists in the repository, agents must log an estimated effort entry after completing any substantial work cycle.
+
+Use this format:
+
+Stage | Agent | Task | Estimated Time | Notes
+
+Example:
+
+| Stage 3 — Inventory CRUD UI | Builder | Implement inventory list screen | 35m | Compose + ViewModel |
+
+Estimates do not need to be precise. The goal is rough tracking of development effort.

@@ -3,12 +3,15 @@
 This repository is built in strict stages. Each run must implement ONE stage only.
 
 Primary sources of truth:
+0) AGENT_CONTEXT.md (stable project context)
 1) CURRENT_STAGE.md
 2) SPEC.md
 3) tasks.md
 4) PROJECT_STATE.md
-5) DB_SCHEMA_ROOM.md (for Stage 2 schema)
-6) AGENTS.md (working agreements + stage lock)
+5) DB_SCHEMA_ROOM.md
+6) ARCHITECTURE.md
+7) UI_ARCHITECTURE.md
+8) AGENTS.md
 
 Workflow coordination:
 If a Supervisor agent is present, Builder must follow instructions from SUPERVISOR_AGENT.md as long as they do not conflict with SPEC.md, CURRENT_STAGE.md, tasks.md, or AGENTS.md.
