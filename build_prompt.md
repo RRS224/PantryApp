@@ -3,15 +3,21 @@
 This repository is built in strict stages. Each run must implement ONE stage only.
 
 Primary sources of truth:
-1) SPEC.md
-2) tasks.md
-3) PROJECT_STATE.md
-4) DB_SCHEMA_ROOM.md (for Stage 2 schema)
-5) AGENTS.md (working agreements + stage lock)
+1) CURRENT_STAGE.md
+2) SPEC.md
+3) tasks.md
+4) PROJECT_STATE.md
+5) DB_SCHEMA_ROOM.md (for Stage 2 schema)
+6) AGENTS.md (working agreements + stage lock)
+
+Workflow coordination:
+If a Supervisor agent is present, Builder must follow instructions from SUPERVISOR_AGENT.md as long as they do not conflict with SPEC.md, CURRENT_STAGE.md, tasks.md, or AGENTS.md.
 
 If any documents conflict:
-- SPEC.md overrides everything.
-- tasks.md overrides build_prompt.md when it is more specific.
+- SPEC.md has highest priority
+- CURRENT_STAGE.md defines the active stage
+- tasks.md defines the work within that stage
+- AGENTS.md defines behavior rules
 
 ----------------------------------------------------------------------
 ## Non-Negotiable Stage Lock

@@ -2,6 +2,21 @@
 Version: 1.0
 Status: Active
 
+
+## Stage Completion Rule
+
+A stage is considered complete only when all of the following are true:
+
+1. All checklist items for the stage are completed.
+2. Builder stage report has been produced.
+3. Reviewer verdict is either:
+   - APPROVED
+   - APPROVED WITH MINOR CHANGES
+4. Local Android Studio verification has succeeded.
+5. CURRENT_STAGE.md has been updated.
+
+Only after these conditions are met may the stage be committed and pushed.
+
 ## How to use
 - The developer/AI must update this file as work progresses.
 - Mark each item as: [ ] Not started, [~] In progress, [x] Done
@@ -110,32 +125,32 @@ Out of Scope for Stage 2
 • No inventory screens yet
 
 ### Entities (must match spec)
-- [ ] households
-- [ ] locations
-- [ ] pantry_items
-- [ ] usage_history
-- [ ] meal_ideas
-- [ ] meal_ingredients
-- [ ] community_outbox
-- [ ] shopping_list_items (if included in V1)
+- [x] households
+- [x] locations
+- [x] pantry_items
+- [x] usage_history
+- [x] meal_ideas
+- [x] meal_ingredients
+- [x] community_outbox
+- [x] shopping_list_items (if included in V1)
 
 ### DAOs + Database
-- [ ] DAO: HouseholdsDao
-- [ ] DAO: LocationsDao
-- [ ] DAO: PantryItemsDao
-- [ ] DAO: UsageHistoryDao
-- [ ] DAO: MealIdeasDao
-- [ ] DAO: MealIngredientsDao
-- [ ] DAO: CommunityOutboxDao
-- [ ] DAO: ShoppingListDao (if included)
+- [x] DAO: HouseholdsDao
+- [x] DAO: LocationsDao
+- [x] DAO: PantryItemsDao
+- [x] DAO: UsageHistoryDao
+- [x] DAO: MealIdeasDao
+- [x] DAO: MealIngredientsDao
+- [x] DAO: CommunityOutboxDao
+- [x] DAO: ShoppingListDao (if included)
 
-- [ ] PantryDatabase.kt created and migrations strategy defined (versioned)
-- [ ] Repository layer implemented (single repo or split repos)
+- [x] PantryDatabase.kt created and migrations strategy defined (versioned)
+- [x] Repository layer implemented (single repo or split repos)
 
 ### Seed data
-- [ ] Seed default household “Home”
-- [ ] Seed default locations per household: Pantry / Fridge / Freezer / Other
-- [ ] Seed system Meal Suggestions dataset (V1 can start small, structure must support 80–150)
+- [x] Seed default household �Home�
+- [x] Seed default locations per household: Pantry / Fridge / Freezer / Other
+- [x] Seed system Meal Suggestions dataset (V1 can start small, structure must support 80�150)
 
 Deliverable:
 - [ ] App launches and DB seeds correctly on first run
@@ -298,4 +313,6 @@ Deliverable:
 - [ ] Cloud sync / multi-device accounts / real household sharing
 - [ ] Barcode scanning + product DB
 - [ ] Full cooking instructions / nutrition / videos
+
+
 

@@ -14,6 +14,10 @@ Agents must read CURRENT_STAGE.md to determine which stage is active before perf
 
 Codex reads AGENTS.md to understand repo conventions and working agreements.
 
+When a Supervisor agent is used, it controls Builder and Reviewer workflow according to SUPERVISOR_AGENT.md.
+
+Agents must also follow ARCHITECTURE.md and UI_ARCHITECTURE.md when implementing code.
+
 ---
 
 ## Stage-Lock Rules (Agent Guardrails)
