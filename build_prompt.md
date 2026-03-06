@@ -17,6 +17,7 @@ If any documents conflict:
 ## Non-Negotiable Stage Lock
 
 You MUST implement ONLY the single stage explicitly requested by the user.
+Always confirm the current stage by reading CURRENT_STAGE.md.
 
 If the requested stage is Stage N:
 - Do not implement Stage N+1 or later.

@@ -10,9 +10,21 @@ Your job is to build the Android app described in:
 
 Follow these documents exactly.
 
-Codex reads AGENTS.md to understand repo conventions and working agreements. :contentReference[oaicite:0]{index=0}
+Agents must read CURRENT_STAGE.md to determine which stage is active before performing any work.
+
+Codex reads AGENTS.md to understand repo conventions and working agreements.
 
 ---
+
+## Stage-Lock Rules (Agent Guardrails)
+
+1) Implement ONLY the explicitly requested stage; if any task implies Stage 3+ (UI/Compose/ViewModels/navigation), STOP and leave TODOs instead.  
+2) Allowed changes are restricted to the stage’s target folders/packages; do not modify UI files unless needed to fix compilation caused by Stage 2 wiring.  
+3) Do not add new dependencies, libraries, or architecture patterns (e.g., Hilt) unless SPEC.md or tasks.md explicitly demands it.  
+4) Before coding, list the exact files you will create/modify; if that list includes UI/screens, treat it as drift and revise.  
+5) If requirements are unclear, do not guess: add a short “Question / Assumption” note in PROJECT_STATE.md and implement only the unambiguous parts.
+6) Do not introduce new architectural frameworks (DI frameworks, networking stacks, paging libraries, etc.) unless SPEC.md explicitly requires them.
+
 
 ## Working agreements (non-negotiable)
 1) Implement ONLY V1 scope. Do not implement items marked “future hooks” or “not in V1”.
@@ -37,7 +49,7 @@ If a different package is required, ask before changing.
 - Kotlin
 - Jetpack Compose (Material3)
 - MVVM
-- Room (SQLite)
+- Room (SQLite, Flow-based queries)
 - Coroutines + Flow
 - Android SpeechRecognizer for voice input
 
@@ -53,6 +65,9 @@ Repository root contains:
 - tasks.md
 - AGENTS.md
 - (generated Android Studio project folder) PantryCheck/
+
+Database schema is defined in DB_SCHEMA_ROOM.md.
+Agents must follow this schema when implementing Room entities.
 
 Place all Android code inside PantryCheck/.
 
