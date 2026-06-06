@@ -34,6 +34,3 @@ This is a personal learning project and work in progress. It is not a published 
 - Coroutines / Flow
 - Android Studio
 
-## AI-assisted build notes
-
-The project includes documentation from the staged AI-assisted build process. These notes are retained as part of the learning record, not because this is a production app.
