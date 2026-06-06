@@ -1,56 +1,39 @@
-# PantryCheck (Repo: PantryApp)
+# PantryCheck
 
-PantryCheck is an offline-first Android pantry inventory and meal suggestion app built with Kotlin, Jetpack Compose (Material3), Room, and Coroutines/Flow.
+PantryCheck is a small Android pantry inventory app that began with a familiar household problem: reaching the supermarket and realizing the shopping list was sitting peacefully at home.
 
-This repository is developed using an AI-assisted, staged workflow.
+The idea is simple: keep track of what is already in the pantry, reduce duplicate buying, and make it easier to plan meals around what is available at home.
 
-## Source of Truth
-Read these files before making any changes:
-- `SPEC.md` — complete product specification (V1 + future hooks)
-- `build_prompt.md` — staged build flow + guardrails
-- `tasks.md` — task tracker for V1
-- `AGENTS.md` — repo conventions and non-negotiable working rules
+This project also became an experiment in AI-assisted and agentic coding — using AI tools not just to generate code, but to work through specifications, staged development, review notes, and controlled changes.
 
-## V1 Scope (What we are building now)
-- Pantry inventory (COUNT / LEVEL / FRESH)
-- Fast stock updates + Enter Current Stock + Undo + history logging
-- Recount Pantry workflow
-- Meal Suggestions (not recipes) + guest mode + kids + desserts
-- Ingredient intelligence: aliases + substitutes + staples (as per SPEC.md)
-- User-added meal ideas (tight V1) + Community outbox (PENDING only)
-- Voice input for fields + command-style voice actions
-- Settings + JSON export/import backup
-- Multi-household ready data model (local only in V1)
+## What it does
 
-## Non-Goals (Not in V1)
-- Barcode scanning / external product databases
-- Payments / in-app ordering
-- Community backend, stats, gamification, sync
-- Cloud login / real multi-device sync
-- Full recipe steps / nutrition
+- Track pantry items
+- Update stock quickly
+- Reduce duplicate purchases
+- Support basic meal suggestion ideas
+- Keep data local-first
+- Explore voice input and household-friendly workflows
 
-## Tech Stack
+## Why I built it
+
+Partly because we kept forgetting the shopping list.
+
+Partly because I wanted to see whether AI-assisted coding could be guided through a structured project rather than allowed to enthusiastically run in twelve directions at once.
+
+## Status
+
+This is a personal learning project and work in progress. It is not a published app.
+
+## Tech stack
+
 - Kotlin
-- Jetpack Compose (Material3)
-- MVVM + Repository
-- Room (SQLite)
-- Coroutines + Flow
-- Android SpeechRecognizer (voice)
+- Jetpack Compose
+- Room / SQLite
+- MVVM
+- Coroutines / Flow
+- Android Studio
 
-Min SDK: API 26
+## AI-assisted build notes
 
-## Repo Layout
-- Repo root: specs and AI workflow documents
-- Android Studio project will live in: `PantryCheck/`
-
-## How to Build / Run (once code exists)
-- Open `PantryCheck/` in Android Studio
-- Sync Gradle
-- Run on emulator or device
-- Grant microphone permission for voice features
-
-## AI Workflow Rules
-- Work stage-by-stage (Stage 1 → stop → wait for approval)
-- No future hooks implemented during V1
-- Prefer the simplest implementation that satisfies SPEC.md
-- Full files with paths; avoid partial snippets for core files
+The project includes documentation from the staged AI-assisted build process. These notes are retained as part of the learning record, not because this is a production app.
